@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "EverybodyCodes.API": {
+    "WhatDoesTheWulfSay.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

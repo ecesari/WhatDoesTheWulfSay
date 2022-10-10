@@ -1,9 +1,9 @@
-﻿using EverybodyCodes.Domain.Entities;
-using EverybodyCodes.Domain.Specifications;
+﻿using WhatDoesTheWulfSay.Domain.Entities;
+using WhatDoesTheWulfSay.Domain.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace EverybodyCodes.Infrastructure.Specifications
+namespace WhatDoesTheWulfSay.Infrastructure.Specifications
 {
 	public class SpecificationEvaluator<T> where T : BaseEntity
 	{

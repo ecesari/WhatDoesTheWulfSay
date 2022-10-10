@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -17,9 +17,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BeerWulf.Application\WhatDoesTheWulfSay.Application.csproj" />
-    <ProjectReference Include="..\BeerWulf.Infrastructure\WhatDoesTheWulfSay.Infrastructure.csproj" />
     <ProjectReference Include="..\WhatDoesTheWulfSay.Application\WhatDoesTheWulfSay.Application.csproj" />
     <ProjectReference Include="..\WhatDoesTheWulfSay.Infrastructure\WhatDoesTheWulfSay.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="External\" />
   </ItemGroup>
 
 </Project>

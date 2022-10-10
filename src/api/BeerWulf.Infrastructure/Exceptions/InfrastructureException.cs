@@ -1,4 +1,4 @@
-﻿namespace EverybodyCodes.Infrastructure.Exceptions
+﻿namespace WhatDoesTheWulfSay.Infrastructure.Exceptions
 {
     class InfrastructureException : Exception
 	{

@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using WhatDoesTheWulfSay.Domain.Entities;
 
-namespace EverybodyCodes.Infrastructure
+namespace WhatDoesTheWulfSay.Infrastructure
 {
-    public class CameraDbContext : DbContext
+    public class EcommerceManagementContext : DbContext
     {
-        public CameraDbContext(DbContextOptions<CameraDbContext> options) : base(options) { }
-        public DbSet<Domain.Entities.Camera> Cameras { get; set; }
+        public EcommerceManagementContext(DbContextOptions<EcommerceManagementContext> options) : base(options) { }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
 
     }
 }

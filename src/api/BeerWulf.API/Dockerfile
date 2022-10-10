@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["EverybodyCodes.API/EverybodyCodes.API.csproj", "EverybodyCodes.API/"]
-RUN dotnet restore "EverybodyCodes.API/EverybodyCodes.API.csproj"
+COPY ["WhatDoesTheWulfSay.API/WhatDoesTheWulfSay.API.csproj", "WhatDoesTheWulfSay.API/"]
+RUN dotnet restore "WhatDoesTheWulfSay.API/WhatDoesTheWulfSay.API.csproj"
 COPY . .
-WORKDIR "/src/EverybodyCodes.API"
-RUN dotnet build "EverybodyCodes.API.csproj" -c Release -o /app/build
+WORKDIR "/src/WhatDoesTheWulfSay.API"
+RUN dotnet build "WhatDoesTheWulfSay.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "EverybodyCodes.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "WhatDoesTheWulfSay.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "EverybodyCodes.API.dll"]
+ENTRYPOINT ["dotnet", "WhatDoesTheWulfSay.API.dll"]

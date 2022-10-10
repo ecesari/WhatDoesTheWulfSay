@@ -1,16 +1,16 @@
-﻿using EverybodyCodes.Domain.Entities;
-using EverybodyCodes.Domain.Repositories;
-using EverybodyCodes.Domain.Specifications;
-using EverybodyCodes.Infrastructure.Specifications;
+﻿using WhatDoesTheWulfSay.Domain.Entities;
+using WhatDoesTheWulfSay.Domain.Repositories;
+using WhatDoesTheWulfSay.Domain.Specifications;
+using WhatDoesTheWulfSay.Infrastructure.Specifications;
 using Microsoft.EntityFrameworkCore;
 
-namespace EverybodyCodes.Infrastructure.Repository
+namespace WhatDoesTheWulfSay.Infrastructure.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 	{
-		protected readonly CameraDbContext _context;
+		protected readonly EcommerceManagementContext _context;
 
-		public BaseRepository(CameraDbContext context)
+		public BaseRepository(EcommerceManagementContext context)
 		{
 			_context = context;
 		}
