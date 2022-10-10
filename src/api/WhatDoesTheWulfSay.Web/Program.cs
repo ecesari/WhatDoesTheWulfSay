@@ -1,27 +1,23 @@
 using AutoMapper;
-using WhatDoesTheWulfSay.Application.Common.Mappers;
-using WhatDoesTheWulfSay.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using WhatDoesTheWulfSay.Application.Common.Interfaces;
+using WhatDoesTheWulfSay.Application.Common.Mappers;
+using WhatDoesTheWulfSay.Application.Services;
+using WhatDoesTheWulfSay.Domain.Repositories;
 using WhatDoesTheWulfSay.Infrastructure;
 using WhatDoesTheWulfSay.Infrastructure.Repository;
-using WhatDoesTheWulfSay.Application.Common.Interfaces;
-using WhatDoesTheWulfSay.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+
 builder.Services.AddControllers();
-
 //db
-builder.Services.AddDbContext<EcommerceManagementContext>(options =>
-  options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDb")));
-
+builder.Services.AddDbContext<EcommerceManagementContext>(x => x.UseInMemoryDatabase("ECommerceDb"));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Review API", Version = "v1" });
-});
+builder.Services.AddSwaggerGen();
 
 //automapper
 var mapperConfig = new MapperConfiguration(mc =>
@@ -37,26 +33,14 @@ builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>
 builder.Services.AddTransient<IReviewRepository, ReviewRepository>();
 builder.Services.AddTransient<IReviewService, ReviewService>();
 
-
-
 var app = builder.Build();
 
-using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
-{
-    var context = serviceScope.ServiceProvider.GetRequiredService<EcommerceManagementContext>();
-    context.Database.EnsureCreated();  
-}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.RoutePrefix = "swagger/ui";
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Review API(v1)");
-    });
+    app.UseSwaggerUI();
 }
-
 
 app.UseHttpsRedirection();
 

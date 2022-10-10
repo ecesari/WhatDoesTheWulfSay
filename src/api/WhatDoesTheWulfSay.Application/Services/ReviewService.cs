@@ -11,46 +11,12 @@ namespace WhatDoesTheWulfSay.Application.Services
     public class ReviewService : IReviewService
     {
 
-        //private readonly ICameraRepository cameraRepository;
-        //private readonly IMapper mapper;
-
-        //public CameraService(ICameraRepository cameraRepository, IMapper mapper)
-        //{
-        //    this.cameraRepository = cameraRepository;
-        //    this.mapper = mapper;
-        //}
-
-        //public async Task<IEnumerable<ReviewViewModel>> GetAll()
-        //{
-        //    var cameras = await cameraRepository.GetAllAsync();
-        //    var viewModel = mapper.Map<List<ReviewViewModel>>(cameras);
-        //    return await Task.FromResult(viewModel);
-        //}
-
-        //public async Task<IEnumerable<ReviewViewModel>> GetByName(string name)
-        //{
-        //    var specification = new HasNameSpecification(name);
-        //    var entities = await cameraRepository.GetAsync(specification);
-        //    var viewModel = mapper.Map<List<ReviewViewModel>>(entities);
-        //    return await Task.FromResult(viewModel);
-        //}
-
-        //public async Task<IEnumerable<ReviewViewModel>> BulkAdd(List<ReviewInsertCommand> insertCommands)
-        //{
-        //    var entities = mapper.Map<List<Domain.Entities.Camera>>(insertCommands);
-        //    var cameras = await cameraRepository.AddBulkAsync(entities);
-        //    var returnModel = mapper.Map<List<ReviewViewModel>>(cameras);
-        //    return await Task.FromResult(returnModel);
-        //}
-
         private readonly IReviewRepository reviewRepository;
-        private readonly IProductRepository productRepository;
         private readonly IMapper mapper;
 
-        public ReviewService(IReviewRepository reviewRepository, IProductRepository productRepository, IMapper mapper)
+        public ReviewService(IReviewRepository reviewRepository, IMapper mapper)
         {
             this.reviewRepository = reviewRepository;
-            this.productRepository = productRepository;
             this.mapper = mapper;
         }
 
